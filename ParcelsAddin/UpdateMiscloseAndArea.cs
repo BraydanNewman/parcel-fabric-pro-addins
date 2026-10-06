@@ -324,7 +324,7 @@ namespace ParcelsAddin
                   if (_metersPerUnit < 1)
                     ParcelAttributes.Add("StatedAreaUnit", 109405); //use square foot
                   else
-                    ParcelAttributes.Add("StatedAreaUnit", 109404); //use square meter
+                    ParcelAttributes.Add("StatedAreaUnit", 109404); //use square metre
                 }
               }
               editOper.Modify(featlyr.Key, oid, ParcelAttributes);
