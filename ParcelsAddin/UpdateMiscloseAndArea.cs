@@ -311,21 +311,6 @@ namespace ParcelsAddin
               if (!Double.IsNaN(calcArea))
               {
                 ParcelAttributes.Add("CalculatedArea", calcArea);
-                var AreaSqMeters = calcArea * _metersPerUnit * _metersPerUnit;
-                if (AreaSqMeters >= _largeParcelToleranceInSqMeters)
-                {
-                  var areaInLargeParcelUnits = AreaSqMeters / _sqMetersPerAreaUnit;// example: 1 acre = 4046.86 sq.meters
-                  ParcelAttributes.Add("StatedArea", areaInLargeParcelUnits.ToString("0.00"));
-                  ParcelAttributes.Add("StatedAreaUnit", _largeParcelUnitCode);
-                }
-                else
-                {
-                  ParcelAttributes.Add("StatedArea", calcArea.ToString("0"));
-                  if (_metersPerUnit < 1)
-                    ParcelAttributes.Add("StatedAreaUnit", 109405); //use square foot
-                  else
-                    ParcelAttributes.Add("StatedAreaUnit", 109404); //use square metre
-                }
               }
               editOper.Modify(featlyr.Key, oid, ParcelAttributes);
               ParcelAttributes.Clear();
